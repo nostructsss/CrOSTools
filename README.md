@@ -19,7 +19,7 @@ The script manages structural file migrations across isolated environments to op
 │
 ▼ (download_flex_image)
 ┌─────────────────────────────────┐
-│ 1. Download Workspace (~5-30+GB)|     │ ───► Caches base image
+│ 1. Download Workspace (~5-30+GB)|  ───► Caches base image
 |    (Tested with 32GB image on   |
 |    a 128GB SSD)                 |
 └─────────────────────────────────┘      (automatic_enrollment_image.bin)
