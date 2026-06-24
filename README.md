@@ -46,4 +46,5 @@ The utility is built for Debian/Ubuntu-based environments (or any environment su
    chmod +x deploy_cros.sh
 
 3. **Usage and Configuration Options:**
-    ```sudo ./build-flex-image.sh --token <YOUR_ENROLLMENT_TOKEN> [OPTIONS]
+    ```bash
+    sudo ./build-flex-image.sh --token <YOUR_ENROLLMENT_TOKEN> [OPTIONS]
