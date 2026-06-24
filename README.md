@@ -1,6 +1,6 @@
 # ChromeOS Flex Deployment Image Builder
 
-A robust, enterprise-grade automation script to securely fetch, cache, and inject Google Admin enrollment tokens into ChromeOS Flex mass-deployment images (`.bin`). 
+An enterprise-grade automation script to securely fetch, cache, and inject Google Admin enrollment tokens into ChromeOS Flex mass-deployment images (`.bin`). 
 
 This tool eliminates the manual overhead of configuring cloud-readiness deployment states for bulk hardware provisioning.
 
@@ -18,16 +18,14 @@ The script manages structural file migrations across isolated environments to op
 [Google/ChromeOS Repos]
 │
 ▼ (download_flex_image)
-┌─────────────────────────────────┐
-│ 1. Download Workspace (~5-30+GB)|  ───► Caches base image
-|    (Tested with 32GB image on   |
-|    a 128GB SSD)                 |
-└─────────────────────────────────┘      (automatic_enrollment_image.bin)
+
+ 1. Download Workspace (~5-30+GB)  ───► Caches base image (automatic_enrollment_image.bin)
+    (Tested with 32GB image on   
+    a 128GB SSD)                                   
 │
 ▼ (cp to safe environment)
-┌─────────────────────────────────┐
-│ 2. Package Workspace            │ ───► In-place modification
-└─────────────────────────────────┘      (package_flex_image --enrollment_token)
+
+ 2. Package Workspace             ───► In-place modification (package_flex_image --enrollment_token)
 │
 ▼
 [Final Provisioned Image ready for USB flashing]
