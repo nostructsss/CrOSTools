@@ -21,7 +21,7 @@ The script manages structural file migrations across isolated environments to op
 
  1. Download Workspace (~5-30+GB)  ───► Caches base image (automatic_enrollment_image.bin)
     (Tested with 32GB image on   
-    a 128GB SSD)                                   
+    a 128GB SSD Debian Machine)                                   
 │
 ▼ (cp to safe environment)
 
