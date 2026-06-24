@@ -78,15 +78,15 @@ export ALT_TMPDIR="$PACKAGE_WORKSPACE"
 
 TOKEN=$(echo "$TOKEN" | tr '[:upper:]' '[:lower:]')
 
-echo "--> Work directory (download):  $DOWNLOAD_WORKSPACE"
-echo "--> Work directory (package):   $PACKAGE_WORKSPACE"
-echo "--> Enrolling with:  $TOKEN"
+echo "Work directory (download):  $DOWNLOAD_WORKSPACE"
+echo "Work directory (package):   $PACKAGE_WORKSPACE"
+echo "Enrolling with:  $TOKEN"
 
-echo "--> Checking system tools..."
+echo "Checking system tools..."
 sudo apt-get update && sudo apt-get install -y curl gpg
 
 if [ ! -f /usr/share/keyrings/google.linux.gpg ]; then
-    echo "--> Configuring Google repositories..."
+    echo "Configuring Google repositories..."
     curl -fsSL https://google.com | \
       sudo gpg --dearmor --yes -o /usr/share/keyrings/google.linux.gpg
     echo "deb [signed-by=/usr/share/keyrings/google.linux.gpg] https://google.com stable main" | \
@@ -94,17 +94,17 @@ if [ ! -f /usr/share/keyrings/google.linux.gpg ]; then
 fi
 
 if ! command -v download_flex_image &> /dev/null; then
-    echo "--> Installing cros-flex-tools..."
+    echo "Installing cros-flex-tools..."
     sudo apt-get update && sudo apt-get install -y cros-flex-tools
 fi
 
 TARGET_IMAGE="$DOWNLOAD_WORKSPACE/automatic_enrollment_image.bin"
 
 if [ ! -f "$TARGET_IMAGE" ]; then
-    echo "--> Pulling base mass-deploy image (disk cached via TMPDIR)..."
+    echo "Pulling base mass-deploy image (disk cached via TMPDIR)..."
     download_flex_image --image_type=mass-deploy --output="$TARGET_IMAGE"
 else
-    echo "--> Found existing base image. Skipping download stage."
+    echo "Found existing base image. Skipping download stage."
 fi
 
 FINAL_IMAGE="$PACKAGE_WORKSPACE/automatic_enrollment_image.bin"
@@ -112,7 +112,7 @@ if [ ! -f "$FINAL_IMAGE" ]; then
     cp "$TARGET_IMAGE" "$FINAL_IMAGE"
 fi
 
-echo "--> Injecting provisioning token into image..."
+echo "Injecting provisioning token into image..."
 package_flex_image --in_place --image_path="$FINAL_IMAGE" --enrollment_token="${TOKEN}"
 
-echo "--> Process complete! Image ready at: $FINAL_IMAGE"
+echo "Process complete! Image ready at: $FINAL_IMAGE"
